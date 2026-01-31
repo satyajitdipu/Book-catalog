@@ -61,7 +61,4 @@ protected $casts = [
         return $this->hasMany(Rating::class);
     }
 
-    public function wishlists()
-    {
-        return $this->hasMany(Wishlist::class);
-    }
+}
