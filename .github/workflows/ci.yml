@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test-backend:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        extensions: pdo, pdo_mysql
+    - name: Install Composer dependencies
+      working-directory: ./books
+      run: composer install --no-progress --prefer-dist --optimize-autoloader
+    - name: Copy environment file
+      working-directory: ./books
+      run: cp .env.example .env
+    - name: Generate application key
+      working-directory: ./books
+      run: php artisan key:generate
+    - name: Run tests
+      working-directory: ./books
+      run: php artisan test --coverage
+
+  test-frontend:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: frontend/package-lock.json
+    - name: Install dependencies
+      working-directory: ./frontend
+      run: npm ci
+    - name: Run tests
+      working-directory: ./frontend
+      run: npm test -- --coverage --watchAll=false
