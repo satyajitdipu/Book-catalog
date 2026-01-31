@@ -63,4 +63,3 @@ Route::apiResource('reviews', ReviewController::class);
 Route::get('/books/{bookId}/reviews', [ReviewController::class, 'getReviewsForBook']);
 Route::apiResource('ratings', RatingController::class);
 Route::get('/books/{bookId}/ratings', [RatingController::class, 'getRatingsForBook']);
-Route::apiResource('wishlists', WishlistController::class);
