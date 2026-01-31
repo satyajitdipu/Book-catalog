@@ -53,4 +53,9 @@ protected $casts = [
         return $this->hasMany(Review::class);
     }
 
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
 }
