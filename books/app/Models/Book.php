@@ -36,6 +36,17 @@ class Book extends Model
     {
         return $this->belongsTo(Author::class, 'author_id');
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'book_id', 'book_id');
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class, 'book_id', 'book_id');
+    }
+
     public function run(): void
 {
     Book::factory()
