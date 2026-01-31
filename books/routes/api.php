@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ApiController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
-Route::get('/allbook/{page}', [ApiController::class, 'index']);
-Route::get('/allauthor', [ApiController::class, 'indexa']);
+Route::get('/allbook/{page}', [ApiController::class, 'allbook']);
+Route::get('/allauthor', [ApiController::class, 'allauthor']);
 Route::get('/book/{id}', [ApiController::class, 'show']);
 
 
