@@ -10,6 +10,10 @@ A full-stack application for managing a book catalog with authors. Built with La
 - API endpoints
 - Responsive UI
 
+## New Feature
+
+Added support for book ratings.
+
 ## Backend (Laravel)
 
 ### Setup
