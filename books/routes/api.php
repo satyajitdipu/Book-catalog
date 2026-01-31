@@ -2,9 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ApiController;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,4 +51,6 @@ Route::DELETE('/book/delete/{id}', [ApiController::class, 'destorybook']);
 //     // Routes requiring session functionality
 //     Route::post('logout', [UserController::class, 'logout']);
 // });
+
+Route::apiResource('categories', CategoryController::class);
 
