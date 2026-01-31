@@ -3,8 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ApiController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,5 +57,6 @@ Route::apiResource('categories', CategoryController::class);
 
 Route::get('/books', [ApiController::class, 'getBooks']);
 Route::get('/user/profile', [ApiController::class, 'userProfile']);
-Route::put('/user/profile', [ApiController::class, 'updateUserProfile']);
-
+Route::put('/user/profile', [UserController::class, 'updateProfile']);
+Route::apiResource('reviews', ReviewController::class);
+Route::get('/books/{bookId}/reviews', [ReviewController::class, 'getReviewsForBook']);

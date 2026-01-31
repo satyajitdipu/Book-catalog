@@ -22,6 +22,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'bio',
+        'avatar',
+        'preferences',
     ];
 
     /**
@@ -42,6 +45,12 @@ class User extends Authenticatable
 protected $casts = [
     'email_verified_at' => 'datetime',
     'password' => 'encrypted',
+    'preferences' => 'array',
 ];
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 
 }
