@@ -136,14 +136,50 @@ class ApiController extends Controller
         return response()->json(['status' => 200, 'Author' => $Author]);
     }
 
+    public function allauthor()
+    {
+        return $this->indexa();
+    }
+
+    public function allbook($page)
+    {
+        return $this->index($page);
+    }
+
+    public function getBooks(Request $request)
+    {
+        $query = Book::query();
+
+        if ($request->has('search')) {
+            $query->where('book_name', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->has('author')) {
+            $query->whereHas('Author', function ($q) use ($request) {
+                $q->where('author_name', 'like', '%' . $request->author . '%');
+            });
+        }
+
+        $books = $query->get();
+        return response()->json($books);
+    }
+
+    public function userProfile()
+    {
+        // Mock user profile
+        return response()->json(['name' => 'Test User', 'email' => 'test@example.com']);
+    }
+
+    public function updateUserProfile(Request $request)
+    {
+        // Mock update
+        return response()->json(['message' => 'Profile updated']);
+    }
+
     public function show($id)
     {
         $book = Book::findOrFail($id);
         return response()->json($book);
-    }
-    public function Book()
-    {
-        return $this->hasMany(Book::class, 'author_id');
     }
     
     public function showauthor($id)

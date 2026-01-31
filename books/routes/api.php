@@ -54,3 +54,7 @@ Route::DELETE('/book/delete/{id}', [ApiController::class, 'destorybook']);
 
 Route::apiResource('categories', CategoryController::class);
 
+Route::get('/books', [ApiController::class, 'getBooks']);
+Route::get('/user/profile', [ApiController::class, 'userProfile']);
+Route::put('/user/profile', [ApiController::class, 'updateUserProfile']);
+
