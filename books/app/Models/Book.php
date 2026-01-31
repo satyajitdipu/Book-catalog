@@ -42,6 +42,16 @@ class Book extends Model
         return $this->hasMany(Review::class, 'book_id', 'book_id');
     }
 
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class, 'book_id', 'book_id');
+    }
+
+    public function wishlists()
+    {
+        return $this->hasMany(Wishlist::class, 'book_id', 'book_id');
+    }
+
     public function run(): void
 {
     Book::factory()
