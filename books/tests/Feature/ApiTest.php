@@ -7,6 +7,8 @@ use Tests\TestCase;
 
 class ApiTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * Test the allbook API endpoint.
      */
