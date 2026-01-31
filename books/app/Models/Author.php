@@ -22,7 +22,8 @@ class Author extends Model
         'age',
         'ratings',
         'monthly_award',
-        'email'
+        'email',
+        'status'
     ];
     public function run(): void
     {

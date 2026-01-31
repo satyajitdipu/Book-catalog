@@ -25,6 +25,8 @@ class User extends Authenticatable
         'bio',
         'avatar',
         'preferences',
+        'role',
+        'banned',
     ];
 
     /**
@@ -46,6 +48,7 @@ protected $casts = [
     'email_verified_at' => 'datetime',
     'password' => 'encrypted',
     'preferences' => 'array',
+    'banned' => 'boolean',
 ];
 
     public function reviews()
