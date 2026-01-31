@@ -23,6 +23,7 @@ class Book extends Model
         'main_img',
         'isbn',
         'author_id',
+        'status',
     ];
 
     // protected static function booted()
