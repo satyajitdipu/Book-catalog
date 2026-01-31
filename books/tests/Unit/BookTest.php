@@ -13,11 +13,11 @@ class BookTest extends TestCase
     public function test_book_has_attributes(): void
     {
         $book = new Book([
-            'title' => 'Test Book',
+            'book_name' => 'Test Book',
             'author_id' => 1,
         ]);
 
-        $this->assertEquals('Test Book', $book->title);
+        $this->assertEquals('Test Book', $book->book_name);
         $this->assertEquals(1, $book->author_id);
     }
 }

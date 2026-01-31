@@ -13,11 +13,11 @@ class AuthorTest extends TestCase
     public function test_author_has_attributes(): void
     {
         $author = new Author([
-            'name' => 'Test Author',
-            'bio' => 'Test bio',
+            'author_name' => 'Test Author',
+            'genre' => 'Test bio',
         ]);
 
-        $this->assertEquals('Test Author', $author->name);
-        $this->assertEquals('Test bio', $author->bio);
+        $this->assertEquals('Test Author', $author->author_name);
+        $this->assertEquals('Test bio', $author->genre);
     }
 }

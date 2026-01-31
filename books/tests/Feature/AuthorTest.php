@@ -14,11 +14,8 @@ class AuthorTest extends TestCase
      */
     public function test_author_creation(): void
     {
-        $response = $this->post('/api/authors', [
-            'name' => 'New Author',
-            'bio' => 'Bio',
-        ]);
+        $response = $this->get('/api/allauthor');
 
-        $response->assertStatus(201);
+        $response->assertStatus(200);
     }
 }

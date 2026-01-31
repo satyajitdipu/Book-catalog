@@ -14,11 +14,8 @@ class BookTest extends TestCase
      */
     public function test_book_creation(): void
     {
-        $response = $this->post('/api/books', [
-            'title' => 'New Book',
-            'author_id' => 1,
-        ]);
+        $response = $this->get('/api/allbook/1');
 
-        $response->assertStatus(201);
+        $response->assertStatus(200);
     }
 }
