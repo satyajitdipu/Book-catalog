@@ -14,6 +14,10 @@ A full-stack application for managing a book catalog with authors. Built with La
 
 Added support for book ratings.
 
+## Another Feature
+
+Implemented author search functionality.
+
 ## Backend (Laravel)
 
 ### Setup
