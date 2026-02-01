@@ -2,9 +2,18 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\ApiController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminBookController;
+use App\Http\Controllers\AdminAuthorController;
+use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------

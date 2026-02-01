@@ -1,0 +1,39 @@
+name: Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        extensions: pdo, pdo_mysql
+    - name: Install dependencies
+      run: |
+        cd books
+        composer install --no-progress --prefer-dist --optimize-autoloader
+    - name: Copy environment file
+      run: |
+        cd books
+        cp .env.example .env
+    - name: Generate application key
+      run: |
+        cd books
+        php artisan key:generate
+    - name: Run migrations
+      run: |
+        cd books
+        php artisan migrate --force
+    - name: Run tests
+      run: |
+        cd books
+        php artisan test --coverage
