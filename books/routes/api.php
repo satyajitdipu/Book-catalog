@@ -72,27 +72,3 @@ Route::apiResource('reviews', ReviewController::class);
 Route::get('/books/{bookId}/reviews', [ReviewController::class, 'getReviewsForBook']);
 Route::apiResource('ratings', RatingController::class);
 Route::get('/books/{bookId}/ratings', [RatingController::class, 'getRatingsForBook']);
-Route::apiResource('wishlists', WishlistController::class);
-Route::apiResource('comments', CommentController::class);
-Route::get('/books/{bookId}/comments', [CommentController::class, 'index']);
-
-Route::middleware('admin')->prefix('admin')->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'dashboard']);
-    Route::apiResource('users', AdminUserController::class);
-    Route::apiResource('books', AdminBookController::class);
-    Route::apiResource('authors', AdminAuthorController::class);
-    Route::get('/reviews', [AdminController::class, 'reviews']);
-    Route::get('/ratings', [AdminController::class, 'ratings']);
-    Route::get('/wishlists', [AdminController::class, 'wishlists']);
-    Route::delete('/users/{id}', [AdminController::class, 'deleteUser']);
-    Route::delete('/books/{id}', [AdminController::class, 'deleteBook']);
-    Route::delete('/authors/{id}', [AdminController::class, 'deleteAuthor']);
-    Route::post('/users/{id}/promote', [AdminController::class, 'promoteUser']);
-    Route::post('/users/{id}/demote', [AdminController::class, 'demoteUser']);
-    Route::post('/books/{id}/approve', [AdminBookController::class, 'approve']);
-    Route::post('/books/{id}/reject', [AdminBookController::class, 'reject']);
-    Route::post('/authors/{id}/approve', [AdminAuthorController::class, 'approve']);
-    Route::post('/authors/{id}/reject', [AdminAuthorController::class, 'reject']);
-    Route::post('/users/{id}/ban', [AdminUserController::class, 'ban']);
-    Route::post('/users/{id}/unban', [AdminUserController::class, 'unban']);
-});
