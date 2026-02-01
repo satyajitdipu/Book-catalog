@@ -46,8 +46,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('me', [UserController::class, 'me']);
     Route::post('author',[ApiController::class,'create']);
     Route::post('/book', [ApiController::class, 'createb']);
-    Log::info("this is info message");
-    Log::error("This is error message");
     Route::post('/author/update/{id}', [ApiController::class, 'updateauthor']);
     Route::get('/author/{id}', [ApiController::class, 'showauthor']);
     Route::post('/book/update/{id}', [ApiController::class, 'updatebook']);
@@ -66,8 +64,10 @@ Route::DELETE('/book/delete/{id}', [ApiController::class, 'destorybook']);
 Route::apiResource('categories', CategoryController::class);
 
 Route::get('/books', [ApiController::class, 'getBooks']);
-Route::get('/user/profile', [ApiController::class, 'userProfile']);
-Route::put('/user/profile', [UserController::class, 'updateProfile']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user/profile', [ApiController::class, 'userProfile']);
+    Route::put('/user/profile', [UserController::class, 'updateProfile']);
+});
 Route::apiResource('reviews', ReviewController::class);
 Route::get('/books/{bookId}/reviews', [ReviewController::class, 'getReviewsForBook']);
 Route::apiResource('ratings', RatingController::class);
