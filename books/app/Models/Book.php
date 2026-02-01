@@ -53,10 +53,8 @@ class Book extends Model
         return $this->hasMany(Wishlist::class, 'book_id', 'book_id');
     }
 
-    public function run(): void
-{
-    Book::factory()
-            ->count(10000)
-            ->create();
-}
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'book_id', 'book_id');
+    }
 }
