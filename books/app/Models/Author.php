@@ -9,7 +9,8 @@ class Author extends Model
 {
     use HasFactory;
 
-    protected $table = 'authors';protected $primaryKey = "author_id"; // Specify the primary key column name
+    protected $table = 'authors';
+    protected $primaryKey = "author_id"; // Specify the primary key column name
     public $incrementing = false;
     
 
@@ -25,12 +26,6 @@ class Author extends Model
         'email',
         'status'
     ];
-    public function run(): void
-    {
-        Book::factory()
-                ->count(10)
-                ->create();
-    }
     
 
 }
